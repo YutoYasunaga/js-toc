@@ -1,9 +1,9 @@
-simple-toc
+js-toc
 ==========
 
 A JavaScript plugin that creates a table of contents from headings in a document.
 
-![simple-toc](./screenshot.png)
+![js-toc](./screenshot.png)
 
 ## Table of Contents
 
@@ -18,12 +18,12 @@ A JavaScript plugin that creates a table of contents from headings in a document
 
 Install using npm:
 ```
-npm install simple-toc
+npm install js-toc
 ```
 
 Install using yarn:
 ```
-yarn add simple-toc
+yarn add js-toc
 ```
 
 ## Usage
@@ -40,7 +40,7 @@ yarn add simple-toc
 ### In JS file
 ```js
 // Import the plugin
-import 'simple-toc'
+import 'js-toc'
 
 // Initialize the table of contents
 document.querySelector('article').toc({
