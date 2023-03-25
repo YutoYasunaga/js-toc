@@ -1,5 +1,5 @@
 {
-    "name": "@yuto_yasunaga/toc-toc",
+    "name": "simple-toc",
     "version": "1.0.0",
     "description": "A JavaScript plugin to create a table of contents from headings in a document.",
     "license": "MIT",
@@ -10,10 +10,13 @@
         "table of contents",
         "table",
         "contents",
-        "toc-toc",
+        "simple-toc",
         "javascript",
         "plugin"
     ],
-    "repository": "YutoYasunaga/toc-toc",
-    "bugs": "https://github.com/YutoYasunaga/toc-toc/issues"
+    "repository": "YutoYasunaga/simple-toc",
+    "bugs": "https://github.com/YutoYasunaga/simple-toc/issues",
+    "dependencies": {
+        "sass": "^1.60.0"
+    }
 }
