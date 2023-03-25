@@ -39,7 +39,7 @@ Element.prototype.toc = function(options = {}) {
       const targetId = event.target.getAttribute('href').slice(1)
       const targetElement = document.getElementById(targetId)
       targetElement.scrollIntoView({ behavior: options.smooth ? 'smooth' : 'auto' })
-      history.pushState(null, null, `#${targetId}`);
+      history.pushState(null, null, `#${targetId}`)
     })
 
     const listItem = document.createElement('li')
@@ -55,7 +55,8 @@ Element.prototype.toc = function(options = {}) {
     toc.appendChild(listItem)
   }
   
-  tocContainer.appendChild(toc);
+  tocContainer.innerHTML = ''
+  tocContainer.appendChild(toc)
   
   // ===== DETECT CURRENT TOC ITEM =====
   window.addEventListener('scroll', function() {
