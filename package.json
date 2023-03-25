@@ -1,0 +1,19 @@
+{
+    "name": "toc-toc",
+    "version": "1.0.0",
+    "description": "A JavaScript plugin to create a table of contents from headings in a document.",
+    "license": "MIT",
+    "author": "Yuto Yasunaga",
+    "main": "index.js",
+    "keywords": [
+        "toc",
+        "table of contents",
+        "table",
+        "contents",
+        "toc-toc",
+        "javascript",
+        "plugin"
+    ],
+    "repository": "YutoYasunaga/toc-toc",
+    "bugs": "https://github.com/YutoYasunaga/toc-toc/issues"
+}
