@@ -26,7 +26,7 @@ Element.prototype.toc = function(options = {}) {
       prevLevels[j] = 0
     }
 
-    const sectionNumber = prevLevels.slice(startingLevel - 1, level).join('.').replace('.0', '')
+    const sectionNumber = prevLevels.slice(startingLevel - 1, level).join('.').replace(/\.0/g, "")
     const newHeadingId = `${heading.textContent.toLowerCase().replace(/ /g, '-')}`
     heading.id = newHeadingId
 
