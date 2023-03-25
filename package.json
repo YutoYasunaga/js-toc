@@ -1,5 +1,5 @@
 {
-    "name": "toc-toc",
+    "name": "@yuto_yasunaga/toc-toc",
     "version": "1.0.0",
     "description": "A JavaScript plugin to create a table of contents from headings in a document.",
     "license": "MIT",
