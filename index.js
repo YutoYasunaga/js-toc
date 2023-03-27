@@ -1,4 +1,4 @@
-import './style.scss'
+import './style.min.css'
 
 Element.prototype.toc = function(options = {}) {
   const defaultOptions = {

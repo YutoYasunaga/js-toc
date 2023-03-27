@@ -1,6 +1,6 @@
 {
     "name": "js-toc",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A JavaScript plugin to create a table of contents from headings in a document.",
     "license": "MIT",
     "author": "Yuto Yasunaga",
@@ -15,8 +15,5 @@
         "plugin"
     ],
     "repository": "YutoYasunaga/js-toc",
-    "bugs": "https://github.com/YutoYasunaga/js-toc/issues",
-    "dependencies": {
-        "sass": "^1.60.0"
-    }
+    "bugs": "https://github.com/YutoYasunaga/js-toc/issues"
 }
