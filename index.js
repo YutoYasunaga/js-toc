@@ -8,8 +8,17 @@ Element.prototype.toc = function(options = {}) {
   }
   options = { ...defaultOptions, ...options }
 
-  // ===== ADD TABLE OF CONTENTS =====
   const tocContainer = document.querySelector(options.tocSelector)
+
+  // Add default toc header if not exists
+  if (!tocContainer.querySelector('.toc-header')) {
+    const tocHeader = document.createElement('div')
+    tocHeader.classList.add('toc-header')
+    tocHeader.textContent = 'Table of Contents'
+    tocContainer.appendChild(tocHeader)
+  }
+
+  // ===== ADD TABLE OF CONTENTS =====
   const headings = this.querySelectorAll('h1, h2, h3, h4, h5, h6')
   if (headings.length === 0) return
   
@@ -55,9 +64,31 @@ Element.prototype.toc = function(options = {}) {
     toc.appendChild(listItem)
   }
   
-  tocContainer.innerHTML = ''
-  tocContainer.appendChild(toc)
+  // ===== TOGGLE COLLAPSE =====
+  var tocBody = document.createElement('div')
+  tocBody.classList.add('toc-body')
+  tocContainer.appendChild(tocBody)
+  tocBody.innerHTML = ''
+  tocBody.appendChild(toc)
+  tocBody.style.height = tocBody.scrollHeight + 'px'
   
+  var toggleButton = document.createElement("div")
+  toggleButton.classList.add('chevron-down')
+  toggleButton.id = "tocBodyToggle"
+  tocContainer.appendChild(toggleButton)
+
+  toggleButton.addEventListener("click", function() {
+    if (tocBody.style.height !== '0px') {
+      tocBody.style.height = '0px'
+      toggleButton.classList.remove('chevron-down')
+      toggleButton.classList.add('chevron-left')
+    } else {
+      tocBody.style.height = tocBody.scrollHeight + 'px'
+      toggleButton.classList.remove('chevron-left')
+      toggleButton.classList.add('chevron-down')
+    }
+  })
+
   // ===== DETECT CURRENT TOC ITEM =====
   window.addEventListener('scroll', function() {
     let scroll = window.scrollY
