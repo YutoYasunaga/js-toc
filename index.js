@@ -1,6 +1,8 @@
 import './style.min.css'
 
 Element.prototype.toc = function(options = {}) {
+  console.log('Initialize TOC')
+
   const defaultOptions = {
     tocSelector: '#toc',
     tocIndent: true,
@@ -10,12 +12,12 @@ Element.prototype.toc = function(options = {}) {
 
   const tocContainer = document.querySelector(options.tocSelector)
 
-  // Add default toc header if not exists
-  if (!tocContainer.querySelector('.toc-header')) {
-    const tocHeader = document.createElement('div')
-    tocHeader.classList.add('toc-header')
-    tocHeader.textContent = 'Table of Contents'
-    tocContainer.appendChild(tocHeader)
+  // Add default toc title if not exists
+  if (!tocContainer.querySelector('.toc-title')) {
+    const tocTitle = document.createElement('div')
+    tocTitle.classList.add('toc-title')
+    tocTitle.textContent = 'Table of Contents'
+    tocContainer.appendChild(tocTitle)
   }
 
   // ===== ADD TABLE OF CONTENTS =====
@@ -63,27 +65,26 @@ Element.prototype.toc = function(options = {}) {
 
     toc.appendChild(listItem)
   }
+
+  var tocContent = document.createElement('div')
+  tocContent.classList.add('toc-content')
+  tocContainer.appendChild(tocContent)
+  tocContent.appendChild(toc)
+  tocContent.style.height = tocContent.scrollHeight + 'px'
   
   // ===== TOGGLE COLLAPSE =====
-  var tocBody = document.createElement('div')
-  tocBody.classList.add('toc-body')
-  tocContainer.appendChild(tocBody)
-  tocBody.innerHTML = ''
-  tocBody.appendChild(toc)
-  tocBody.style.height = tocBody.scrollHeight + 'px'
-  
   var toggleButton = document.createElement("div")
   toggleButton.classList.add('chevron-down')
-  toggleButton.id = "tocBodyToggle"
+  toggleButton.id = "tocContentToggle"
   tocContainer.appendChild(toggleButton)
 
   toggleButton.addEventListener("click", function() {
-    if (tocBody.style.height !== '0px') {
-      tocBody.style.height = '0px'
+    if (tocContent.style.height !== '0px') {
+      tocContent.style.height = '0px'
       toggleButton.classList.remove('chevron-down')
       toggleButton.classList.add('chevron-left')
     } else {
-      tocBody.style.height = tocBody.scrollHeight + 'px'
+      tocContent.style.height = tocContent.scrollHeight + 'px'
       toggleButton.classList.remove('chevron-left')
       toggleButton.classList.add('chevron-down')
     }
