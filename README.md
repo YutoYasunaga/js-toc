@@ -31,7 +31,7 @@ yarn add js-toc
 ### In HTML file
 ```html
 <!-- Add this where you want the table of contents to appear -->
-<div id="toc" class="toc-wrap">
+<div id="toc" class="toc-container">
     <div class="toc-title">Table of Contents</div>
 </div>
 ```
