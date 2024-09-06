@@ -56,5 +56,24 @@ You can customize the behavior of the table of contents by passing an options ob
 - `tocIndent` (default: true): This option specifies whether or not to indent the table of contents items based on their heading levels. If set to false, all items will be left-aligned.
 - `smooth` (default: true): This option specifies whether or not to enable smooth scrolling to the clicked table of contents item. If set to false, the scrolling will be immediate.
 
+## Use with Ruby on Rails and turbo-rails
+
+When using `js-toc` with Ruby on Rails and Turbo Drive, it's essential to ensure that the plugin initializes properly after each Turbo Drive navigation. The following JavaScript snippet ensures that the table of contents is set up once Turbo Drive loads new content without adding multiple listeners:
+
+```js
+javascript:
+  document.addEventListener('turbo:load', () => {
+    // Ensure the initializer runs only once
+    if (!window.isTOCInitialized) {
+      document.querySelector('article')?.toc({
+        tocSelector: '#toc',
+        tocIndent: true,
+        smooth: true
+      });
+      window.isTOCInitialized = true;  // Set flag to prevent re-initialization
+    }
+  });
+```
+
 ## License
 This library is licensed under the MIT License.
