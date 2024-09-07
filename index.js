@@ -6,7 +6,9 @@ Element.prototype.toc = function(options = {}) {
   const defaultOptions = {
     tocSelector: '#toc',
     tocIndent: true,
+    tocNumber: true,
     smooth: true,
+    maxHeight: '70vh'
   }
   options = { ...defaultOptions, ...options }
 
@@ -54,7 +56,7 @@ Element.prototype.toc = function(options = {}) {
     })
 
     const listItem = document.createElement('li')
-    listItem.textContent = sectionNumber
+    if (options.tocNumber) listItem.textContent = sectionNumber
     listItem.appendChild(anchor)
 
     listItem.classList.add('toc-item')
@@ -68,6 +70,7 @@ Element.prototype.toc = function(options = {}) {
 
   var tocContent = document.createElement('div')
   tocContent.classList.add('toc-content')
+  tocContent.style.maxHeight = options.maxHeight
   tocContainer.appendChild(tocContent)
   tocContent.appendChild(toc)
   tocContent.style.height = tocContent.scrollHeight + 'px'

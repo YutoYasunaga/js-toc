@@ -1,7 +1,18 @@
-js-toc
-==========
+# js-toc
 
-A JavaScript plugin that creates a table of contents from headings in a document.
+A JavaScript plugin that automatically creates a dynamic, SEO-friendly table of contents from headings in a document.
+
+**js-toc** offers a suite of powerful features designed to enhance your documentation and articles:
+- 📑 **Dynamic Table of Contents**: Automatically generates a fully functional table of contents based on your document's headings.
+- 🌐 **SEO Friendly**: Adds anchor links to improve navigation and optimize SEO.
+- 🧭 **Smooth Scrolling**: Ensures a smooth, pleasant scrolling experience when navigating to sections.
+- 🔢 **Automatic Numbering**: Automatically assigns hierarchical numbers to sections, enhancing clarity.
+- 📐 **Optional Indentation**: Customizable indentation levels to reflect the structure of your document visually.
+- ♿ **Enhanced Accessibility**: Improves accessibility by providing a clear structure for easier navigation.
+- 💼 **Professional Look**: Gives your content a professional, organized appearance, enhancing usability.
+- 📂 **Collapsible Sections**: Features an easy-to-use toggle to collapse or expand the table of contents, making large documents more manageable.
+- 📏 **Custom Max Height**: Control the table of contents' maximum height with the `maxHeight` option, perfect for fitting TOC sections within a limited space while maintaining usability.
+
 
 ![js-toc](./screenshot.png)
 
@@ -12,7 +23,7 @@ A JavaScript plugin that creates a table of contents from headings in a document
     - [In HTML file](#in-html-file)
     - [In JS file](#in-js-file)
 - [Options](#options)
-- [Licnse](#license)
+- [License](#license)
 
 ## Installation
 
@@ -45,34 +56,36 @@ import 'js-toc'
 document.querySelector('article').toc({
   tocSelector: '#toc',
   tocIndent: true,
+  tocNumber: true,
   smooth: true,
+  maxHeight: '70vh',
 })
 ```
 
 ## Options
 You can customize the behavior of the table of contents by passing an options object to the toc() method. The following options are available:
 
-- `tocSelector` (default: '#toc'): This option specifies the selector for the container where the table of contents will be rendered. You can pass in any valid CSS selector as a string.
-- `tocIndent` (default: true): This option specifies whether or not to indent the table of contents items based on their heading levels. If set to false, all items will be left-aligned.
-- `smooth` (default: true): This option specifies whether or not to enable smooth scrolling to the clicked table of contents item. If set to false, the scrolling will be immediate.
+- `tocSelector` (default: '#toc'): Specifies the selector for the container where the table of contents will be rendered.
+- `tocIndent` (default: true): Specifies whether or not to indent the table of contents items based on their heading levels.
+- `tocNumber` (default: true): Automatically adds numbers to each table of contents item according to their hierarchy in the document.
+- `smooth` (default: true): Specifies whether or not to enable smooth scrolling to the clicked table of contents item.
+- `maxHeight` (default: '70vh'): Sets a maximum height for the TOC container, making it scrollable if the content exceeds the specified height.
 
 ## Use with Ruby on Rails and turbo-rails
 
-When using `js-toc` with Ruby on Rails and Turbo Drive, it's essential to ensure that the plugin initializes properly after each Turbo Drive navigation. The following JavaScript snippet ensures that the table of contents is set up once Turbo Drive loads new content without adding multiple listeners:
+When using `js-toc` with Ruby on Rails and Turbo Drive, ensure that the plugin initializes properly after each Turbo Drive navigation. The following JavaScript snippet ensures that the table of contents is set up once Turbo Drive loads new content without adding multiple listeners:
 
 ```js
 javascript:
-  document.addEventListener('turbo:load', () => {
-    // Ensure the initializer runs only once
-    if (!window.isTOCInitialized) {
-      document.querySelector('article')?.toc({
-        tocSelector: '#toc',
-        tocIndent: true,
-        smooth: true
+  // Ensure isListenerAdded is only declared once at a global scope
+  window.isListenerAdded = window.isListenerAdded || false;
+
+  if (!window.isListenerAdded) {
+      document.addEventListener('turbo:load', () => {
+          document.querySelector('article')?.toc();
       });
-      window.isTOCInitialized = true;  // Set flag to prevent re-initialization
-    }
-  });
+      window.isListenerAdded = true;
+  }
 ```
 
 ## License
