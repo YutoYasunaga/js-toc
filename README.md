@@ -5,14 +5,13 @@ A JavaScript plugin that automatically creates a dynamic, SEO-friendly table of 
 **js-toc** offers a suite of powerful features designed to enhance your documentation and articles:
 - 📑 **Dynamic Table of Contents**: Automatically generates a fully functional table of contents based on your document's headings.
 - 🌐 **SEO Friendly**: Adds anchor links to improve navigation and optimize SEO.
-- 🧭 **Smooth Scrolling**: Ensures a smooth, pleasant scrolling experience when navigating to sections.
+- 🧭 **Smooth Scrolling**: Smoothly scrolls to sections, including automatic scrolling to the current anchor when the page is loaded.
 - 🔢 **Automatic Numbering**: Automatically assigns hierarchical numbers to sections, enhancing clarity.
 - 📐 **Optional Indentation**: Customizable indentation levels to reflect the structure of your document visually.
 - ♿ **Enhanced Accessibility**: Improves accessibility by providing a clear structure for easier navigation.
 - 💼 **Professional Look**: Gives your content a professional, organized appearance, enhancing usability.
 - 📂 **Collapsible Sections**: Features an easy-to-use toggle to collapse or expand the table of contents, making large documents more manageable.
-- 📏 **Custom Max Height**: Control the table of contents' maximum height with the `maxHeight` option, perfect for fitting TOC sections within a limited space while maintaining usability.
-
+- 📏 **Customizable Options**: Easily customize various features such as TOC height, numbering, indentation, and more for greater flexibility and control.
 
 ![js-toc](./screenshot.png)
 
@@ -65,11 +64,16 @@ document.querySelector('article').toc({
 ## Options
 You can customize the behavior of the table of contents by passing an options object to the toc() method. The following options are available:
 
-- `tocSelector` (default: '#toc'): Specifies the selector for the container where the table of contents will be rendered.
-- `tocIndent` (default: true): Specifies whether or not to indent the table of contents items based on their heading levels.
-- `tocNumber` (default: true): Automatically adds numbers to each table of contents item according to their hierarchy in the document.
-- `smooth` (default: true): Specifies whether or not to enable smooth scrolling to the clicked table of contents item.
-- `maxHeight` (default: '70vh'): Sets a maximum height for the TOC container, making it scrollable if the content exceeds the specified height.
+| Option          | Default               | Description                                                                                       |
+|-----------------|-----------------------|---------------------------------------------------------------------------------------------------|
+| `tocSelector`   | `'#toc'`              | Specifies the selector for the container where the table of contents will be rendered.             |
+| `maxHeight`     | `'75vh'`              | Sets the maximum height for the TOC container, making it scrollable if the content exceeds the height. |
+| `activeClass`   | `'js-toc-active'`     | Specifies the class name for the currently active TOC item as the user scrolls through the document. |
+| `tocIndent`     | `true`                | Indents the TOC items based on their heading levels.                                               |
+| `tocNumber`     | `true`                | Automatically adds numbers to each TOC item according to its hierarchy.                            |
+| `smoothScroll`  | `true`                | Enables smooth scrolling to the clicked TOC item.                                                  |
+| `autoOpen`      | `true`                | Automatically opens the TOC on page load. If set to `false`, the TOC will start in a collapsed state. |
+
 
 ## Use with Ruby on Rails and turbo-rails
 
